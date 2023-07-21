@@ -3,6 +3,20 @@ import { useRouter } from "next/router";
 import axios from 'axios';
 
 export const Addpremiumtip = () => {
+  const LeagueEnum = {
+    PremierLeague: 'Premier League',
+    LaLiga: 'La Liga',
+    Bundesliga: 'Bundesliga',
+    SerieA: 'Serie A',
+    ChampionsLeague: 'Champions League',
+    WorldCup: 'WorldCup',
+    EuropaLeague: 'Europa League',
+    Superlig: 'Super Ligue',
+    LigueOne: 'Ligue One',
+    Bundesliga: 'German Bundesliga',
+    SpanishPrimeraDivision: 'Spanish Primera '
+  };
+
   const router = useRouter();
   useEffect(() => {
     const token = sessionStorage.getItem('jwtToken');
@@ -33,7 +47,7 @@ export const Addpremiumtip = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = 'https://tasty-duck-coveralls.cyclic.app/v1/premium';
+      const url = 'https://teal-worried-adder.cyclic.app/v1/premium';
       const response = await axios.post(url, formData);
       console.log(response.data); // Handle the response as needed
       // Reset form data if needed
@@ -93,14 +107,17 @@ export const Addpremiumtip = () => {
             />
           </div>
           <div className='mt-4'>
-            <input
-              type='text'
-              name='league'
-              placeholder='League'
-              value={formData.league}
-              onChange={handleInputChange}
-              className='p-3'
-            />
+             <select
+    name='league'
+    value={formData.league}
+    onChange={handleInputChange}
+    className='p-3 w-full'
+  >
+    <option value="">Select a League</option>
+    {Object.values(LeagueEnum).map((league) => (
+      <option key={league} value={league}>{league}</option>
+    ))}
+  </select>
           </div>
           <div className='mt-4'>
             <input

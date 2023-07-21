@@ -4,7 +4,21 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 export const Addfreetips = () => {
-  
+  // enums.js
+ const LeagueEnum = {
+  PremierLeague: 'Premier League',
+  LaLiga: 'La Liga',
+  Bundesliga: 'Bundesliga',
+  SerieA: 'Serie A',
+  ChampionsLeague: 'Champions League',
+  WorldCup: 'WorldCup',
+  EuropaLeague: 'Europa League',
+  Superlig: 'Super Ligue',
+  LigueOne: 'Ligue One',
+  Bundesliga: 'German Bundesliga',
+  SpanishPrimeraDivision: 'Spanish Primera '
+};
+
   const router = useRouter()
   useEffect(() => {
     const token = sessionStorage.getItem('jwtToken');
@@ -39,7 +53,7 @@ export const Addfreetips = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = 'https://tasty-duck-coveralls.cyclic.app/v1/freetip';
+      const url = 'https://teal-worried-adder.cyclic.app//v1/freetip';
       const response = await axios.post(url, formData);
       // console.log(response.data);
       setMessage(response.data.message)
@@ -104,14 +118,17 @@ export const Addfreetips = () => {
           </div>
 
           <div className='mt-4'>
-            <input
-              type='text'
-              name='league'
-              placeholder='league'
-              value={formData.league}
-              onChange={handleInputChange}
-              className='p-3 w-full'
-            />
+          <select
+    name='league'
+    value={formData.league}
+    onChange={handleInputChange}
+    className='p-3 w-full'
+  >
+    <option value="">Select a League</option>
+    {Object.values(LeagueEnum).map((league) => (
+      <option key={league} value={league}>{league}</option>
+    ))}
+  </select>
           </div>
 
           <div className='mt-4'>

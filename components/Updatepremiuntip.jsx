@@ -3,6 +3,19 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 export const Updatepremiumtip = () => {
+  const LeagueEnum = {
+    PremierLeague: 'Premier League',
+    LaLiga: 'La Liga',
+    Bundesliga: 'Bundesliga',
+    SerieA: 'Serie A',
+    ChampionsLeague: 'Champions League',
+    WorldCup: 'WorldCup',
+    EuropaLeague: 'Europa League',
+    Superlig: 'Super Ligue',
+    LigueOne: 'Ligue One',
+    Bundesliga: 'German Bundesliga',
+    SpanishPrimeraDivision: 'Spanish Primera ',
+  }
   const router = useRouter();
   useEffect(() => {
     const token = sessionStorage.getItem('jwtToken');
@@ -26,7 +39,7 @@ export const Updatepremiumtip = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `https://tasty-duck-coveralls.cyclic.app/v1/premium/${id}`;
+        const url = `https://teal-worried-adder.cyclic.app/v1/premium/${id}`;
         const response = await axios.get(url);
         const { date, time, league, match, odds, tip, scores } = response.data;
         setDate(date);
@@ -79,7 +92,7 @@ export const Updatepremiumtip = () => {
       scores,
     };
     try {
-      const url = `https://tasty-duck-coveralls.cyclic.app/v1/premium/${id}`;
+      const url = `https://teal-worried-adder.cyclic.app/v1/premium/${id}`;
       const response = await axios.put(url, formData);
       console.log(response.data);
       setDate("");
@@ -114,7 +127,7 @@ export const Updatepremiumtip = () => {
               value={date}
               onChange={handleInputChange}
               placeholder="date"
-              className="p-3 w-full"
+              className="p-3 rounded-lg"
             />
           </div>
           <div className="mt-4">
@@ -124,19 +137,22 @@ export const Updatepremiumtip = () => {
               placeholder="time"
               value={time}
               onChange={handleInputChange}
-              className="p-3"
+              className="p-3 rounded-lg"
             />
           </div>
 
           <div className="mt-4">
-            <input
-              type="text"
-              name="league"
-              placeholder="league"
-              value={league}
-              onChange={handleInputChange}
-              className="p-3"
-            />
+          <select
+    name='league'
+    value={league}
+    onChange={handleInputChange}
+    className='p-4 rounded-lg'
+  >
+    <option value="">Select a League</option>
+    {Object.values(LeagueEnum).map((league) => (
+      <option key={league} value={league}>{league}</option>
+    ))}
+  </select>
           </div>
 
           <div className="mt-4">
@@ -146,7 +162,7 @@ export const Updatepremiumtip = () => {
               placeholder="match"
               value={match}
               onChange={handleInputChange}
-              className="p-3"
+              className="p-3 rounded-lg"
             />
           </div>
 
@@ -157,7 +173,7 @@ export const Updatepremiumtip = () => {
               placeholder="odds"
               value={odds}
               onChange={handleInputChange}
-              className="p-3"
+              className="p-3 rounded-lg"
             />
           </div>
 
@@ -168,7 +184,7 @@ export const Updatepremiumtip = () => {
               placeholder="tip"
               value={tip}
               onChange={handleInputChange}
-              className="p-3"
+              className="p-3 rounded-lg"
             />
           </div>
 
@@ -179,7 +195,7 @@ export const Updatepremiumtip = () => {
               placeholder="scores"
               value={scores}
               onChange={handleInputChange}
-              className="p-3"
+              className="p-3 rounded-lg"
             />
           </div>
 

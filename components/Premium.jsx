@@ -5,7 +5,7 @@ export const Premium = () => {
     const [Tip, setTips] = useState(null)
     async function getPremium() {
         try {
-            let response = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/premium')
+            let response = await axios.get('https://teal-worried-adder.cyclic.app/v1/premium')
             console.log(response.data)
             setTips(response.data)
         } catch (err) {

@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image";
+
 import { useRouter } from "next/router"
 import axios from "axios";
 import FootballImg from '/images/football.png'
@@ -10,8 +11,9 @@ import { Input } from "./Input";
 import { AuthButton } from "./AuthButton";
 import { OAuthButton } from "./OAuthButton";
 import { useState } from "react";
-
+import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri';
 export const AuthForm = () => {
+  const [showPassword, setShowPassword] = useState(false)
     const[message, setMessage] = useState('')
     const [error, setError] = useState('')
     const [formData, setFormData] = useState({
@@ -28,10 +30,14 @@ export const AuthForm = () => {
     });
     }
 
+    const handleTogglePassword = () => {
+      setShowPassword(!showPassword);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const url = 'https://tasty-duck-coveralls.cyclic.app/v1/admin/login';
+          const url = 'https://teal-worried-adder.cyclic.app/v1/admin/login';
           const response = await axios.post(url, formData);
           console.log(response.data);
           console.log(response.data.token);
@@ -83,21 +89,17 @@ export const AuthForm = () => {
                 <div className="py-6">
                  <form onSubmit={handleSubmit}>
                  <Input placeholder='Enter Email' type='email' name='email' value={formData.email} onChange={handleInputchange} />
-                    <Input placeholder='Enter Password' type='password'  name='password' value={formData.password} onChange={handleInputchange} />
-                    {/* {
-                        !!!signup &&
-                        <div className="text-right mb-4">
-                            <Link href='/auth/reset-password' className="hover:text-app-sky">Forgotten Password?</Link>
-                        </div>
-                    } */}
+                  <div>
+                  <Input placeholder='Enter Password'
+                  type={showPassword ? 'text' : 'password'} 
+                   name='password' 
+                   value={formData.password} 
+                   onChange={handleInputchange}  /> 
+                  <button onClick={handleTogglePassword} >{showPassword ? <RiEyeOffFill /> : <RiEyeFill />}</button>
+                  </div>
                     <AuthButton>Sign In</AuthButton>
                  </form>
                 </div>
-
-                {/* <p className="text-center">{
-                    signup ?
-                        <>Already have an account?{' '}<Link href='/auth/signin' className="text-[#ffab6f] hover:text-app-sky">Sign In</Link></> : <>Don&#39;t have an account?{' '}<Link href='/auth/signup' className="text-[#ffab6f] hover:text-app-sky">Sign Up</Link></>}
-                </p> */}
 
                 <div className='flex justify-center items-center gap-4 pt-6 pb-4'>
                     <OAuthButton><BiLogoGoogle size={20} /></OAuthButton>

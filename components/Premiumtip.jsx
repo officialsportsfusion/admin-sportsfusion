@@ -10,7 +10,7 @@ export const Premiumtip = () => {
     const router = useRouter()
     const deletetip = async (tipId) => {
         try {
-            await axios.delete(`https://tasty-duck-coveralls.cyclic.app/v1/premium/${tipId}`);
+            await axios.delete(`https://teal-worried-adder.cyclic.app/v1/premium/${tipId}`);
             // Update the state to reflect the deleted tip
             setTips(Tip.filter((tip) => tip._id !== tipId));
             console.log("Tip deleted successfully");
@@ -22,7 +22,7 @@ export const Premiumtip = () => {
 
     async function getPremium() {
         try {
-            let response = await axios.get('https://tasty-duck-coveralls.cyclic.app/v1/premium')
+            let response = await axios.get('https://teal-worried-adder.cyclic.app/v1/premium')
             console.log(response.data)
            
 
@@ -41,7 +41,7 @@ export const Premiumtip = () => {
         } else {
           getPremium();
         }
-      }, );
+      },[] );
     return (
         <section className="bg-app-black py-12">
             <h1 className="text-app-orange font-bold text-4xl text-center mb-4">Fusion Premium</h1>
