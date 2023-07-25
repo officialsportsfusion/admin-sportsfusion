@@ -33,12 +33,17 @@ export const AuthHeader = () => {
                 <Link href="/premiumtip">Premium</Link>
               </li>
               <li>
+                <Link href="/series">series</Link>
+              </li>
+              <li>
                   <Link href='/addfreetip'>Add Freetip</Link>
                 </li>
                 <li>
                   <Link href='/addpremium'>Add Premiumtip</Link>
                 </li>
-             
+                <li>
+                  <Link href='/addseries'>Add series</Link>
+                </li>
             </ul>
           </nav>
         )}
