@@ -89,13 +89,14 @@ export const AuthForm = () => {
                 <div className="py-6">
                  <form onSubmit={handleSubmit}>
                  <Input placeholder='Enter Email' type='email' name='email' value={formData.email} onChange={handleInputchange} />
-                  <div>
+                  <div className='rounded-3xl w-11/12 bg-red-500 h-[45px] mb-3 text-black'>
                   <Input placeholder='Enter Password'
-                  type={showPassword ? 'text' : 'password'} 
+                   type={showPassword ? 'text' : 'password'} 
                    name='password' 
+                   className='w-11/12 h-full rounded-l-3xl text-black pl-5 border-none outline-none'
                    value={formData.password} 
-                   onChange={handleInputchange}  /> 
-                  <button onClick={handleTogglePassword} >{showPassword ? <RiEyeOffFill /> : <RiEyeFill />}</button>
+                   onChange={handleInputchange}/> 
+                  <button onClick={handleTogglePassword} className='ml-3'>{showPassword ? <RiEyeOffFill /> : <RiEyeFill />}</button>
                   </div>
                     <AuthButton>Sign In</AuthButton>
                  </form>
