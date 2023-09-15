@@ -96,7 +96,7 @@ export const AuthForm = () => {
                    className='w-11/12 h-full rounded-l-3xl text-black pl-5 border-none outline-none'
                    value={formData.password} 
                    onChange={handleInputchange}/> 
-                  <button onClick={handleTogglePassword} className='ml-3'>{showPassword ? <RiEyeOffFill /> : <RiEyeFill />}</button>
+                  <button onClick={handleTogglePassword} className='ml-1 mt-3 lg:ml-2'>{showPassword ? <RiEyeOffFill /> : <RiEyeFill />}</button>
                   </div>
                     <AuthButton>Sign In</AuthButton>
                  </form>
