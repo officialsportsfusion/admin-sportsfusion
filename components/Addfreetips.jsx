@@ -17,6 +17,7 @@ export const Addfreetips = () => {
   LigueOne: 'Ligue One',
   Bundesliga: 'German Bundesliga',
   Primeria: 'Primeria A',
+  Primeria: 'Primeria B',
   SpanishPrimeraDivision: 'Spanish Primera '
 };
 
