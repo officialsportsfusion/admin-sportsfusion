@@ -120,18 +120,16 @@ export const Addfreetips = () => {
           </div>
 
           <div className='mt-4'>
-          <select
+  <input
+    type='text'
     name='league'
+    placeholder='League'
     value={formData.league}
     onChange={handleInputChange}
     className='p-3 w-full'
-  >
-    <option value="">Select a League</option>
-    {Object.values(LeagueEnum).map((league) => (
-      <option key={league} value={league}>{league}</option>
-    ))}
-  </select>
-          </div>
+  />
+</div>
+
 
           <div className='mt-4'>
             <input
